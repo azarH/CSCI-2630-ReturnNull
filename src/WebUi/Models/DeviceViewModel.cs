@@ -11,10 +11,10 @@ namespace EDeviceClaims.WebUi.Models
             PolicyNumber = device.Number;
             SerialNumber = device.SerialNumber;
             Name = device.DeviceName;
-            MostCurrentClaim = (device.PendingClaim.Any()) ? new ClaimViewModel(device.PendingClaim.First()) : null;
+            
+            // may need to change based on what happens with DeviceDomainModel
+            CurrentClaim = device.CurrentClaim;
         }
-
-        public ClaimViewModel MostCurrentClaim { get; set; }
 
         public string Name { get; set; }
 
@@ -24,9 +24,12 @@ namespace EDeviceClaims.WebUi.Models
 
         public Guid PolicyId { get; set; }
 
+        // may need to change based on what happens with DeviceDomainModel
+        public ClaimDomainModel MostCurrentClaim { get; set; }
+        // may need to change based on what happens with DeviceDomainModel
         public bool HasExistingClaim()
         {
-            return MostCurrentClaim != null;
+            throw new NotImplementedException();
         }
     }
 }
